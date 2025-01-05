@@ -5,7 +5,5 @@
 @tailwind utilities;
 
 body {
-    padding: 1rem;
-    font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-
