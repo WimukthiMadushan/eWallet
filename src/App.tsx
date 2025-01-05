@@ -6,6 +6,7 @@ import Login from "./Components/Login/Login";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import CreateUser from "./Components/CreateUser/CreateUser";
 import AddTransaction from "./Components/AddTransaction/AddTransaction";
+import NotFound from "./Components/NotFound/NotFound";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="createuser" element={<CreateUser />} />
           <Route path="addtransaction" element={<AddTransaction />} />
         </Route>
-        <Route path="*" element={<h1>Not Found</h1>} />
+        <Route path="*" element={<NotFound/>} />
       </Routes>
     </div>
   );
