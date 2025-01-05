@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer"
 
 function Layout() {
   return (
-    <div className="layout">
+    <div className="layout h-100vh">
           <NavBar />
           <Outlet />
           <Footer/>
