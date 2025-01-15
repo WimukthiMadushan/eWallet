@@ -51,7 +51,7 @@ function Dashboard() {
 
   const handleDelete = (Id: any) => {
     axios.delete(`http://54.242.200.246/api/transaction/deleteTransaction/${Id}`)
-      .then((response) => {
+      .then(() => {
         toast.success('Transaction deleted successfully');
 
         // Update transactions state

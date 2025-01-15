@@ -12,13 +12,11 @@ function Login() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
   const { login } = useAuth();
   
   const handleSubmit = async (e: React.FormEvent) => {
   e.preventDefault();
-  setError('');
 
   try {
     let response;
@@ -51,7 +49,6 @@ function Login() {
   } catch (err) {
     //console.error('Error:', err);
     toast.error('An unexpected error', {position: "bottom-right", theme: "colored"})
-    setError('An unexpected error occurred');
   }
 };
 
