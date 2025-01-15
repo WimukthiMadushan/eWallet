@@ -47,7 +47,7 @@ function Login() {
         }
     }
   } catch (err) {
-    //console.error('Error:', err);
+    console.error('Error:', err);
     toast.error('An unexpected error', {position: "bottom-right", theme: "colored"})
   }
 };
