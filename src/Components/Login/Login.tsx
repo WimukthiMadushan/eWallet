@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../Hooks/AuthContext';
+import axios from "axios";
 import { motion } from 'framer-motion';
 import GoogleIcon from '@mui/icons-material/Google';
 import loginImage from './../../assets/login.png';
+import { toast } from 'react-toastify';
 
 function Login() {
   const [isLogin, setIsLogin] = useState(true);
@@ -9,18 +13,49 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  const navigate = useNavigate();
+  const { login } = useAuth();
+  
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError('');
+  e.preventDefault();
+  setError('');
 
-    // TODO: Implement your authentication logic here
+  try {
+    let response;
+    if (isLogin) {
+      response = await axios.post('http://54.242.200.246/api/auth/login', {
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        login(response.data.token);
+        toast.success('Login successful',
+          {position: "bottom-right", theme: "colored"}
+        );
+        //console.log('Login successful', response.data);
+        navigate('/'); 
+        }
 
-    console.log(`${isLogin ? 'Login' : 'Signup'} attempt with:`, { email, password });
-  };
+    } else {
+      response = await axios.post('http://54.242.200.246/api/auth/register', {
+        username,
+        email,
+        password,
+      });
+      if (response.status === 200) {
+        //console.log('Registration successful', response.data);
+        toast.success('Registration successful',{position: "bottom-right", theme: "colored"});
+        setIsLogin(true);
+        }
+    }
+  } catch (err) {
+    //console.error('Error:', err);
+    toast.error('An unexpected error', {position: "bottom-right", theme: "colored"})
+    setError('An unexpected error occurred');
+  }
+};
 
   const handleGoogleSignIn = () => {
-    // TODO: Implement Google OAuth logic here
     console.log('Google Sign-In');
   };
 
