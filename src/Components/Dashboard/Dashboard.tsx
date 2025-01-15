@@ -24,7 +24,7 @@ function Dashboard() {
   const [pieChartData, setPieChartData] = useState<any[]>([]);
 
   useEffect(() => {
-    axios.get(`http://54.242.200.246/api/transaction/getTransactions/${userId}`)
+    axios.get(`https://54.242.200.246/api/transaction/getTransactions/${userId}`)
       .then((response) => {
         const transactionsData = response.data;
         setTransactions(transactionsData);
@@ -50,7 +50,7 @@ function Dashboard() {
   }, [userId]);
 
   const handleDelete = (Id: any) => {
-    axios.delete(`http://54.242.200.246/api/transaction/deleteTransaction/${Id}`)
+    axios.delete(`https://54.242.200.246/api/transaction/deleteTransaction/${Id}`)
       .then(() => {
         toast.success('Transaction deleted successfully');
 

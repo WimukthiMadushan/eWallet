@@ -57,7 +57,7 @@ function AddTransaction() {
     }
 
     try {
-        axios.post('http://54.242.200.246/api/transaction/addtranaction', {
+        axios.post('https://54.242.200.246/api/transaction/addtranaction', {
         userId,
         amount: amountValue,
         date: startDate,
