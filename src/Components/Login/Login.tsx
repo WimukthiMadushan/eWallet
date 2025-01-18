@@ -21,7 +21,7 @@ function Login() {
   try {
     let response;
     if (isLogin) {
-      response = await axios.post('http://54.242.200.246/api/auth/login', {
+      response = await axios.post('https://54.242.200.246/api/auth/login', {
         email,
         password,
       });
@@ -35,7 +35,7 @@ function Login() {
         }
 
     } else {
-      response = await axios.post('http://54.242.200.246/api/auth/register', {
+      response = await axios.post('https://54.242.200.246/api/auth/register', {
         username,
         email,
         password,
